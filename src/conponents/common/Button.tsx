@@ -1,19 +1,22 @@
 import { styled } from "styled-components";
 import { ButtonScheme, ButtonSize } from "../../style/theme"; 
+import { ButtonHTMLAttributes } from "react";
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: React.ReactNode;
     size: ButtonSize;
     scheme: ButtonScheme;
     disabled?: boolean;
     isLoading?: boolean;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function Button({children, size, scheme, disabled, isLoading}: Props) {
-    return <ButtonStyle size={size} scheme={scheme} disabled={disabled} isLoading={isLoading}>
+function Button({children, size, scheme, disabled, isLoading, onClick}: Props) {
+    return (
+    <ButtonStyle size={size} scheme={scheme} disabled={disabled} isLoading={isLoading} onClick={onClick}>
         {children}
         </ButtonStyle>
-    
+    )
 }
 
 const ButtonStyle = styled.button<Omit<Props, "children">>`
