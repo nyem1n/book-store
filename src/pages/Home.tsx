@@ -1,6 +1,6 @@
-import Button from "../conponents/common/Button";
-import InputText from "../conponents/common/InputText";
-import Title from "../conponents/common/Title";
+import Button from "../components/common/Button";
+import InputText from "../components/common/InputText";
+import Title from "../components/common/Title";
 
 function Home() {
     return(

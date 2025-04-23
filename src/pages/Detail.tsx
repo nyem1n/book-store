@@ -1,6 +1,6 @@
-import Footer from "../conponents/common/Footer";
-import Header from "../conponents/common/Header";
-import Sidebar from "../conponents/common/Sidebar";
+import Footer from "../components/common/Footer";
+import Header from "../components/common/Header";
+import Sidebar from "../components/common/Sidebar";
 
 function Detail() {
     return (
