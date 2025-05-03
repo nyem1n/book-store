@@ -1,42 +1,27 @@
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
 import Title from "../components/common/Title";
 import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { login, signup } from "../api/auth.api";
-import { useAlert } from "../hooks/useAlert";
+import { Link } from "react-router-dom";
 import { SignupStyle } from "./Signup";
-import { useAuthStore } from "../store/authStore";
+import { useAuth } from "../hooks/useAuth";
 
-export interface SignupProps {
+export interface LoginProps {
     email: string;
     password: string;
 }
 
 function Login() {
-    const navigate = useNavigate();
-    const showAlert = useAlert();
-
-    const { isloggedIn, storeLogin, storeLogout } = useAuthStore();
+    const { userLogin } = useAuth();
 
     const { 
         register, 
         handleSubmit,
         formState: {errors},
-        } = useForm<SignupProps>();
+        } = useForm<LoginProps>();
 
-    const onSubmit = (data: SignupProps) => {
-        login(data).then((res) => {
-            //상태 변화
-            storeLogin(res.token);
-
-            showAlert("로그인 완료되었습니다.");
-            navigate("/")
-        }, (error) => {
-            showAlert("로그인이 실패했습니다.");
-        })
+    const onSubmit = (data: LoginProps) => {
+        userLogin(data);
     };
 
 
@@ -49,7 +34,8 @@ function Login() {
                         <fieldset>
                             <InputText 
                                 placeholder="이메일" inputType="email" { ...register("email", { 
-                                required: true }) } />
+                                required: true })}
+                                inputMode="text" />
                                 {errors.email && <p className="error-text">이메일을 입력해주세요.</p>}
                         </fieldset>
                         <fieldset>

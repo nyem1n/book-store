@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BookItem from "./BookItem";
-import { Book } from "../../models/book.mode";
+import { Book } from "../../models/book.model";
 import { useLocation } from "react-router-dom";
 import { QUERYSTRING } from "../../constants/querystring";
 import { useEffect, useState } from "react";
